@@ -13,12 +13,71 @@
 
 body {
     background-color: #ebebeb;
+    font-family: Roboto,sans-serif;
 }
 
-.item-lista{    
-    width: 60%;
-    height: 120px;
+.item-lista{
+    display: flex;
+    flex-direction: row;  
+    .box-shadow;  
+    width: 70%;
+    height: 220px;
     background-color: #fcfcfc;
-    .box-shadow;
     padding: 8px;
+
+    .imagem {
+        background-image: url("https://dfexhk854g3kc.cloudfront.net/jeEEgsBM6Ex6ltvYzLABx7ClYik=/1200x800/filters:watermark(https://s3.amazonaws.com/estaticos.casamineira.com.br/marcadagua-133-v1.png,-50,-50,60)/s3.amazonaws.com/imagens-portal.casamineira.com.br/279845/783a14a47a59dbd416ce8bd1c5917efd.jpg");
+        height: 100%;
+        background-size: cover;
+        width: 40%;
+    }
+
+    .info {
+        padding: 15px 10px;
+        width: 60%;
+        color: #0758a6;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 18px;  
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .linha {
+            height: 1px;
+            background: rgb(219, 219, 219);
+            width: 98%;
+            margin-bottom: 20px;
+            margin-top: 0px;
+        }
+
+        .titulo {
+            margin-left: 0;
+        }
+
+    }
+
+    .section {
+        display: flex;
+        width: 100%; 
+        align-items: center;;
+
+        .preco {
+            margin-left: 10px;
+        }
+    }
+
+
+    .descricao {
+        color: #888;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+
+    .btn {
+        color: #4b4000;
+        font-weight: 600;
+    }
+
 }
