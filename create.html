@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet/less" type="text/css" href="style.less" />
+    <title>Document</title>
+</head>
+<body class="background">
+    <div class="bg-opacity">
+        <form class="formulario-criacao container">
+
+            <div class="row">
+                <div class="col-md-5 margin-default">
+                    <label for="finalidade">Vender ou Alugar?</label>
+                    <select class="form-control" id="tipo"></select>
+                </div>
+                <div class="col-md-5 margin-default">
+                    <label for="tipo">Tipo do imóvel</label>
+                    <select class="form-control" id="tipo"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 margin-default">
+                    <label for="titulo">Titulo</label>
+                    <input class="form-control" name="titulo" id="titulo">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 margin-default">
+                        <label for="categoria">Categoria</label>
+                    <input class="form-control" id="categoria">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 margin-default">
+                    <label for="titulo">Área do imóvel</label>
+                    <input class="form-control" id="area">
+                </div>
+                <div class="col-md-12 margin-default">
+                    <label for="titulo">Valor</label>
+                    <input class="form-control" id="valor">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 margin-default">
+                    <label for="titulo">Descrição</label>
+                    <input class="form-control" id="descricao">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 margin-default">
+                    <label for="titulo">Quantos Quartos?</label>
+                    <input class="form-control" id="quartos">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Adicionar</button>
+        </form>
+    </div>
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+</html>
