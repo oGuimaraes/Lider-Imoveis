@@ -9,13 +9,13 @@
     <title>Document</title>
 </head>
 <body class="background">
-    <div class="bg-opacity">
-        <form class="formulario-criacao container">
+    <div class="bg">
+        <form id="form" class="formulario-criacao container">
 
             <div class="row">
                 <div class="col-md-5 margin-default">
                     <label for="finalidade">Vender ou Alugar?</label>
-                    <select class="form-control" id="tipo"></select>
+                    <select class="form-control" id="finalidade"></select>
                 </div>
                 <div class="col-md-5 margin-default">
                     <label for="tipo">Tipo do imóvel</label>
@@ -59,12 +59,19 @@
                     <label for="titulo">Quantos Quartos?</label>
                     <input class="form-control" id="quartos">
                 </div>
+                <div class="col-md-2 margin-default">
+                    <label for="titulo">ID</label>
+                    <input type"number" class="form-control" id="id">
+                 </div>
             </div>
 
-            <button type="submit" class="btn btn-warning">Adicionar</button>
+            <button id="submit" type="submit" class="btn btn-warning">Adicionar</button>
+
         </form>
     </div>
 </body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
 </html>
