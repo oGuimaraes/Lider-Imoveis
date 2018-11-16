@@ -13,7 +13,11 @@
         <form id="form" class="formulario-criacao container">
 
             <div class="row">
-                <div class="col-md-5 margin-default">
+                <div class="col-md-2 margin-default">
+                    <label for="titulo">ID</label>
+                    <input type"number" class="form-control" id="id">
+                </div>
+                <div class="col-md-4 margin-default">
                     <label for="finalidade">Vender ou Alugar?</label>
                     <select class="form-control" id="finalidade">
                             <option disabled selected value="Vender"></option>
@@ -21,7 +25,7 @@
                             <option value="alugar">Alugar</option>
                     </select>
                 </div>
-                <div class="col-md-5 margin-default">
+                <div class="col-md-4 margin-default">
                     <label for="tipo">Tipo do imóvel</label>
                     <select class="form-control" id="tipo">
                         <option disabled selected value="Vender"></option>
@@ -54,7 +58,7 @@
             <div class="row">
                 <div class="col-md-12 margin-default">
                     <label for="titulo">Descrição</label>
-                    <input class="form-control" id="descricao" placeholder="Cobertura de 02 quartos para alugar no Edifício Voltaire, com 01 suíte, 02 vagas de garagem cobertas e em linhas, perto do Clube Recreativo Mineiro, da Kalunga Papelaria, da rua Outono.">
+                    <textarea class="form-control" id="descricao" placeholder="Cobertura de 02 quartos para alugar no Edifício Voltaire, com 01 suíte, 02 vagas de garagem cobertas e em linhas, perto do Clube Recreativo Mineiro, da Kalunga Papelaria, da rua Outono."></textarea>
                 </div>
             </div>
             <div class="row">
@@ -62,9 +66,10 @@
                     <label for="titulo">Quantos Quartos?</label>
                     <input class="form-control" id="quartos" placeholder="3">
                 </div>
-                <div class="col-md-2 margin-default">
-                    <label for="titulo">ID</label>
-                    <input type"number" class="form-control" id="id">
+                <div class="col-md-4 margin-default">
+                    <label for="Escolha uma imagem">Imagem do anuncio</label>
+                    <label for='img-file' class="btn btn-primary">Escolher Imagem </label>
+                    <input id='img-file' type='file'>
                  </div>
             </div>
 

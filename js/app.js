@@ -2,8 +2,10 @@ $(function () {
 
     var colecaoImobiliaria = localStorage.getItem("colecaoImobiliaria");
     //localStorage.setItem('colecaoImobiliaria', $("#form").html());
+    
     colecaoImobiliaria = JSON.parse(colecaoImobiliaria);
     listar();
+    var indice_selecionado = -1;
 
     if (colecaoImobiliaria == null) // Caso não haja conteúdo, iniciamos um vetor vazio
         colecaoImobiliaria = [];
@@ -67,12 +69,10 @@ $(function () {
 
     function listar() {
 
-        //$("#content-area").html("");
-        console.log(colecaoImobiliaria);
+        $("#content-area").html("");
+
         for (var i in colecaoImobiliaria) {
-            console.log(i);
             var imovel = JSON.parse(colecaoImobiliaria[i]);
-            console.log(imovel);
             $("#content-area").append("<div class='item-lista col-sm'><div class='imagem'></div>" +
                 "<div class='info'>" +
                 "<span class='titulo'>" + imovel.titulo + "</span>" +
@@ -82,11 +82,26 @@ $(function () {
                 "<div class='section'>" +
                 "<span class='preco'> R$ " + imovel.valor + "</span>" +
                 "<div class='btn btn-warning'>Ver detalhes</div>" +
+                "<button id='btn-excluir' class='btn btn-sm btn-danger' alt='" + i + "'>Excluir</button>" +
+                "<button class='btn btn-sm btn-info'>Alterar</button>" +
                 "</div>" +
                 "</div>");
         }
     }
 
+	function excluir() {
+		colecaoImobiliaria.splice(indice_selecionado, 1);
+		localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
+		alert("Imóvel excluído.");
+    }
+
+    $("#content-area").on("click", "#btn-excluir", function () {
+        indice_selecionado = parseInt($(this).attr("alt"));
+        alert(indice_selecionado);
+		excluir();
+		listar();
+	});
+    
     var formCadastro = document.getElementById('form');
 
     /*
