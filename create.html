@@ -16,14 +16,20 @@
                 <div class="col-md-5 margin-default">
                     <label for="finalidade">Vender ou Alugar?</label>
                     <select class="form-control" id="finalidade">
-                            <option disabled selected value="todos"></option>
+                            <option disabled selected value="Vender"></option>
                             <option value="vender">Vender</option>
                             <option value="alugar">Alugar</option>
                     </select>
                 </div>
                 <div class="col-md-5 margin-default">
                     <label for="tipo">Tipo do imóvel</label>
-                    <select class="form-control" id="tipo"></select>
+                    <select class="form-control" id="tipo">
+                        <option disabled selected value="Vender"></option>
+                        <option value="casa">Casa</option>
+                        <option value="apartamento">Apartamento</option>
+                        <option value="cobertura">Cobertura</option>
+                        <option value="loja">Loja</option>
+                    </select>
                 </div>
             </div>
 
@@ -36,32 +42,25 @@
 
             <div class="row">
                 <div class="col-md-12 margin-default">
-                        <label for="categoria">Categoria</label>
-                    <input id"input" placeholder="" class="form-control" id="categoria">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 margin-default">
                     <label for="titulo">Área do imóvel</label>
-                    <input class="form-control" id="area">
+                    <input class="form-control" id="area" placeholder="92m²">
                 </div>
                 <div class="col-md-12 margin-default">
                     <label for="titulo">Valor</label>
-                    <input class="form-control" id="valor">
+                    <input class="form-control" id="valor" placeholder="R$ 225.00">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 margin-default">
                     <label for="titulo">Descrição</label>
-                    <input class="form-control" id="descricao">
+                    <input class="form-control" id="descricao" placeholder="Cobertura de 02 quartos para alugar no Edifício Voltaire, com 01 suíte, 02 vagas de garagem cobertas e em linhas, perto do Clube Recreativo Mineiro, da Kalunga Papelaria, da rua Outono.">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 margin-default">
                     <label for="titulo">Quantos Quartos?</label>
-                    <input class="form-control" id="quartos">
+                    <input class="form-control" id="quartos" placeholder="3">
                 </div>
                 <div class="col-md-2 margin-default">
                     <label for="titulo">ID</label>

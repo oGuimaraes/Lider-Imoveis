@@ -16,6 +16,31 @@ $(function () {
             alert("Código já cadastrado.");
             return;
         }
+        
+        if ( $("#titulo").val() == "" ){
+            var placeholder = document.getElementById("titulo").placeholder;
+            $("#titulo").val(placeholder);    
+        }
+
+        if ( $("#area").val() == "" ){
+            var placeholder = document.getElementById("area").placeholder;
+            $("#area").val(placeholder);    
+        }
+
+        if ( $("#valor").val() == "" ){
+            var placeholder = document.getElementById("valor").placeholder;
+            $("#valor").val(placeholder);    
+        }
+
+        if ( $("#descricao").val() == "" ){
+            var placeholder = document.getElementById("descricao").placeholder;
+            $("#descricao").val(placeholder);    
+        }
+
+        if ( $("#quartos").val() == "" ){
+            var placeholder = document.getElementById("quartos").placeholder;
+            $("#quartos").val(placeholder);    
+        }
 
         //* var imovel = cliente
         var imovel = JSON.stringify({
