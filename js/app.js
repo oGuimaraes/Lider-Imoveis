@@ -61,7 +61,6 @@ $(function () {
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
 
         var placeholder = document.getElementById("titulo").placeholder;
-        alert(placeholder);
 
         alert("Registro adicionado.");
         return true;
@@ -94,7 +93,7 @@ $(function () {
     function excluir() {
         colecaoImobiliaria.splice(indice_selecionado, 1);
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
-        //alert("Imóvel excluído.");
+        alert("Imóvel excluído.");
     }
 
     $("#content-area").on("click", "#btn-excluir", function () {
@@ -104,7 +103,7 @@ $(function () {
     });
 
     function editar() {
-        colecaoImobiliaria[indice_selecionado] = JSON.stringify({
+            colecaoImobiliaria[indice_selecionado] = JSON.stringify({
             codigo: $("#id").val(),
             finalidade: $("#finalidade").val(),
             tipo: $("#tipo").val(),
@@ -115,21 +114,22 @@ $(function () {
             descricao: $("#descricao").val(),
             quartos: $("#quartos").val()
         });
-        localStorage.setItem("colecaoImoveis", JSON.stringify(tbClientes));
+        localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
         alert("Informações editadas.");
+        window.open('index.html', "_self");
         operacao = "A";
         return true;
     };
 
-    $("#form").on("submit", function () {
-        if (operacao == "A") {
+    $("#form").on("submit", function(evt) {
+        evt.preventDefault();
+        if (operacao == 'A') {
             return adicionar();
         }
-        else
+        else {
             return editar();
+        }
     });
-
-    //verifica qual operação
 
     var currentLocation = window.location.href;
     var verificaPageCreate = currentLocation.split('?')[0];
@@ -138,7 +138,7 @@ $(function () {
         var parametroDaUrl = currentLocation.split('?')[1];
         var listaDeParametros = parametroDaUrl.split("&");
         var id = listaDeParametros[0].split('=')[1];
-        var operacao = listaDeParametros[1].split("=")[1];
+        operacao = listaDeParametros[1].split("=")[1];
         indice_selecionado = id;
 
         var imovel = JSON.parse(colecaoImobiliaria[indice_selecionado])
@@ -147,7 +147,6 @@ $(function () {
         $("#finalidade").val(imovel.finalidade);
         $("#tipo").val(imovel.tipo);
         $("#titulo").val(imovel.titulo);
-        $("#titulo").focus(imovel.titulo);
         $("#categoria").val(imovel.categoria);
         $("#area").val(imovel.area);
         $("#valor").val(imovel.valor);
@@ -158,21 +157,8 @@ $(function () {
     $("#content-area").on("click", "#btn-alterar", function (){
         operacao = "E";
         indice_selecionado = parseInt($(this).attr("alt"));
-        alert(indice_selecionado);
         var url = 'edit.html?id='+ indice_selecionado + '&operacao=' + operacao; 
-        window.open(url, self);
-
-        var imovel = JSON.parse(colecaoImobiliaria[indice_selecionado]);
-            $(".id").disabled = true;
-            $("#id").val(imovel.id);
-            $("#finalidade").val(imovel.finalidade);
-            $("#tipo").val(imovel.tipo);
-            $("#titulo").focus(imovel.titulo);
-            $("#categoria").val(imovel.categoria);
-            $("#area").val(imovel.area);
-            $("#valor").val(imovel.valor);
-            $("#descricao").val(imovel.descricao);
-            $("#quatos").val(imovel.quartos);
+        window.open(url, "_self");
     });
 
     /* 
