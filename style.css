@@ -1,8 +1,105 @@
+* {
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+.container {
+  margin: 10px auto;
+}
 body {
-  background-color: #dbdbdb;
+  background-color: #ebebeb;
+  font-family: Roboto, sans-serif;
+}
+.form-control::-webkit-input-placeholder {
+  color: #bbbbbb;
+  font-style: italic;
+  font-size: 13px;
+}
+.form-control:-moz-placeholder {
+  color: #bbbbbb;
+  font-style: italic;
+  font-size: 13px;
 }
 .item-lista {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.03);
+  width: 65%;
+  height: 180px;
+  background-color: #fcfcfc;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+.item-lista .imagem {
+  background-image: url("https://dfexhk854g3kc.cloudfront.net/jeEEgsBM6Ex6ltvYzLABx7ClYik=/1200x800/filters:watermark(https://s3.amazonaws.com/estaticos.casamineira.com.br/marcadagua-133-v1.png,-50,-50,60)/s3.amazonaws.com/imagens-portal.casamineira.com.br/279845/783a14a47a59dbd416ce8bd1c5917efd.jpg");
+  height: 100%;
+  background-size: cover;
+  width: 40%;
+}
+.item-lista .info {
+  padding: 15px 10px;
+  width: 60%;
+  color: #0758a6;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item-lista .info .linha {
+  height: 1px;
+  background: #dbdbdb;
+  width: 98%;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+.item-lista .info .titulo {
+  margin-left: 0;
+}
+.item-lista .section {
+  display: flex;
   width: 100%;
-  border: 1px black solid;
-  height: 80px;
+  align-items: center;
+}
+.item-lista .section .preco {
+  margin-left: 10px;
+}
+.item-lista .descricao {
+  color: #888;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.item-lista .btn {
+  color: #4b4000;
+  font-weight: 600;
+}
+.background {
+  background-image: url("/img/bg.jpg");
+}
+.background .bg-opacity {
+  background-color: rgba(10, 23, 55, 0.4);
+}
+.formulario-criacao {
+  margin: 40px auto;
+  padding: 20px 30px;
+  font-family: Roboto, sans-serif;
+  background-color: white;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.03);
+  max-width: 600px;
+}
+.formulario-criacao .margin-default {
+  margin: 5px 0;
+}
+.formulario-criacao .row {
+  justify-content: space-between;
+}
+.formulario-criacao label {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.formulario-criacao input[type='file'] {
+  display: none;
 }
