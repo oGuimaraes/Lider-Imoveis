@@ -160,7 +160,6 @@ $(function () {
         operacao = "E";
         indice_selecionado = parseInt($(this).attr("alt"));
         var url = 'edit.html?id='+ indice_selecionado + '&operacao=' + operacao; 
-        window.open(url, "_self");
         return indice_selecionado
     });
 
@@ -188,6 +187,11 @@ $(function () {
     $("#content-area").on("click", "#btn-detalhes", function () {
         indice_selecionado = parseInt($(this).attr("alt"));
         carregarModal(indice_selecionado);
+    });
+
+    $(".main").on("click", "#btn-create", function () {
+        url = 'create.html'
+        window.open(url, "_self");
     });
 
     /* 
