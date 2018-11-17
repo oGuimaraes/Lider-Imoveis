@@ -80,11 +80,13 @@ $(function () {
                 "</br>" +
                 "<div class='section'>" +
                 "<span class='preco'> R$ " + imovel.valor + "</span>" +
-                "<div class='btn btn-warning'>Ver detalhes</div>" +
+                "<button id='btn-detalhes' alt='" + i + "' type='button' class='btn btn-sm btn-warning' data-toggle='modal' data-target='#modal'>Ver detalhes</button>" +
                 "<button id='btn-excluir' class='btn btn-sm btn-danger' alt='" + i + "'>Excluir</button>" +
                 "<button id ='btn-alterar' class='btn btn-sm btn-info' alt='" + i + "'>Alterar<a href='create.html' target='_blank'></a></button>" +
                 "</div>" +
-                "</div>");
+                "</div>"
+            
+            );
         }
     }
 
@@ -159,6 +161,33 @@ $(function () {
         indice_selecionado = parseInt($(this).attr("alt"));
         var url = 'edit.html?id='+ indice_selecionado + '&operacao=' + operacao; 
         window.open(url, "_self");
+        return indice_selecionado
+    });
+
+
+    function carregarModal(indice_selecionado){
+        var colecaoImobiliaria = localStorage.getItem("colecaoImobiliaria");
+        colecaoImobiliaria = JSON.parse(colecaoImobiliaria); 
+        var imovel = JSON.parse(colecaoImobiliaria[indice_selecionado]);
+            $("#md-titulo-imovel").text(imovel.titulo);
+            $("#md-tipo-imovel").text(imovel.tipo);
+            $("#md-preco-imovel").text(imovel.valor);
+
+            if( imovel.finalide == 'vender'){
+                imovel.finalide = 'À venda'
+            } else 
+                imovel.finalidade = 'À alugar';
+
+            $("#md-finalidade-imovel").text(imovel.finalidade);
+            $("#md-area-imovel").text(imovel.area);
+            $("#md-quartos-imovel").text(imovel.quartos);
+            $("#md-descricao-imovel").text(imovel.descricao);
+
+    }
+
+    $("#content-area").on("click", "#btn-detalhes", function () {
+        indice_selecionado = parseInt($(this).attr("alt"));
+        carregarModal(indice_selecionado);
     });
 
     /* 
