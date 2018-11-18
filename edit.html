@@ -50,8 +50,8 @@
                     <input class="form-control" id="area" placeholder="92m²">
                 </div>
                 <div class="col-md-12 margin-default">
-                    <label for="titulo">Valor</label>
-                    <input class="form-control" id="valor" placeholder="R$ 225.00">
+                    <label for="titulo">Valor (R$)</label>
+                    <input class="form-control" id="valor" placeholder="225.000">
                 </div>
             </div>
 
@@ -68,18 +68,22 @@
                 </div>
                 <div class="col-md-4 margin-default">
                     <label for="Escolha uma imagem">Imagem do anuncio</label>
-                    <label for='img-file' class="btn btn-primary">Escolher Imagem </label>
+                    <label for='img-file' class="btn btn-sm btn-primary">Escolher Imagem </label>
                     <input id='img-file' type='file'>
                  </div>
             </div>
 
-            <button id="submit" type="submit" class="btn btn-warning">Salvar Alterações</button>
+            <div id="imagem-preview"></div>
 
-        </form>
+            <button id="submit" type="submit" class="btn btn-sm btn-warning">Salvar Alterações</button>
+            <button type="button" class="btn btn-sm btn-danger btn-cancelar" id="btn-cancelar">Cancelar</button>
+
+        </form> 
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
 </html>

@@ -54,14 +54,15 @@ $(function () {
             area: $("#area").val(),
             valor: $("#valor").val(),
             descricao: $("#descricao").val(),
-            quartos: $("#quartos").val()
+            quartos: $("#quartos").val(),
+            imagem: base64,
         });
 
         colecaoImobiliaria.push(imovel); //* novo imovel é adicionado á coleção 'colecaoImobiliaria' do localStorage.
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
 
         var placeholder = document.getElementById("titulo").placeholder;
-
+        window.open('index.html', "_self");
         alert("Registro adicionado.");
         return true;
     };
@@ -72,21 +73,22 @@ $(function () {
 
         for (var i in colecaoImobiliaria) {
             var imovel = JSON.parse(colecaoImobiliaria[i]);
-            $("#content-area").append("<div class='item-lista col-sm'><div class='imagem'></div>" +
+            $("#content-area").append("<div class='item-lista col-sm'><div id='imagem' class='imagem"+ i +"'></div>" +
                 "<div class='info'>" +
                 "<span class='titulo'>" + imovel.titulo + "</span>" +
                 "</br>" +
                 "<span class='descricao' >" + imovel.descricao + "</span>" +
                 "</br>" +
                 "<div class='section'>" +
-                "<span class='preco'> R$ " + imovel.valor + "</span>" +
+                "<span class='preco'>R$ " + imovel.valor + "</span>" +
                 "<button id='btn-detalhes' alt='" + i + "' type='button' class='btn btn-sm btn-warning' data-toggle='modal' data-target='#modal'>Ver detalhes</button>" +
                 "<button id='btn-excluir' class='btn btn-sm btn-danger' alt='" + i + "'>Excluir</button>" +
                 "<button id ='btn-alterar' class='btn btn-sm btn-info' alt='" + i + "'>Alterar<a href='create.html' target='_blank'></a></button>" +
                 "</div>" +
                 "</div>"
-            
+
             );
+            $('.imagem' + i).css("background-image", 'url('+ imovel.imagem + ')');
         }
     }
 
@@ -105,7 +107,7 @@ $(function () {
     });
 
     function editar() {
-            colecaoImobiliaria[indice_selecionado] = JSON.stringify({
+        colecaoImobiliaria[indice_selecionado] = JSON.stringify({
             codigo: $("#id").val(),
             finalidade: $("#finalidade").val(),
             tipo: $("#tipo").val(),
@@ -114,7 +116,8 @@ $(function () {
             area: $("#area").val(),
             valor: $("#valor").val(),
             descricao: $("#descricao").val(),
-            quartos: $("#quartos").val()
+            quartos: $("#quartos").val(),
+            imagem: base64
         });
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
         alert("Informações editadas.");
@@ -123,7 +126,7 @@ $(function () {
         return true;
     };
 
-    $("#form").on("submit", function(evt) {
+    $("#form").on("submit", function (evt) {
         evt.preventDefault();
         if (operacao == 'A') {
             return adicionar();
@@ -136,7 +139,7 @@ $(function () {
     var currentLocation = window.location.href;
     var verificaPageCreate = currentLocation.split('?')[0];
 
-    if (document.title == 'Editar'){
+    if (document.title == 'Editar') {
         var parametroDaUrl = currentLocation.split('?')[1];
         var listaDeParametros = parametroDaUrl.split("&");
         var id = listaDeParametros[0].split('=')[1];
@@ -154,33 +157,35 @@ $(function () {
         $("#valor").val(imovel.valor);
         $("#descricao").val(imovel.descricao);
         $("#quartos").val(imovel.quartos);
+        $('#img-preview').src = base64;
     }
 
-    $("#content-area").on("click", "#btn-alterar", function (){
+    $("#content-area").on("click", "#btn-alterar", function () {
         operacao = "E";
         indice_selecionado = parseInt($(this).attr("alt"));
-        var url = 'edit.html?id='+ indice_selecionado + '&operacao=' + operacao; 
+        var url = 'edit.html?id=' + indice_selecionado + '&operacao=' + operacao;
+        window.open(url, "_self");
         return indice_selecionado
     });
 
 
-    function carregarModal(indice_selecionado){
+    function carregarModal(indice_selecionado) {
         var colecaoImobiliaria = localStorage.getItem("colecaoImobiliaria");
-        colecaoImobiliaria = JSON.parse(colecaoImobiliaria); 
+        colecaoImobiliaria = JSON.parse(colecaoImobiliaria);
         var imovel = JSON.parse(colecaoImobiliaria[indice_selecionado]);
-            $("#md-titulo-imovel").text(imovel.titulo);
-            $("#md-tipo-imovel").text(imovel.tipo);
-            $("#md-preco-imovel").text(imovel.valor);
+        $("#md-titulo-imovel").text(imovel.titulo);
+        $("#md-tipo-imovel").text(imovel.tipo);
+        $("#md-preco-imovel").text(imovel.valor);
 
-            if( imovel.finalide == 'vender'){
-                imovel.finalide = 'À venda'
-            } else 
-                imovel.finalidade = 'À alugar';
+        if (imovel.finalide == 'vender') {
+            imovel.finalide = 'À venda'
+        } else
+            imovel.finalidade = 'À alugar';
 
-            $("#md-finalidade-imovel").text(imovel.finalidade);
-            $("#md-area-imovel").text(imovel.area);
-            $("#md-quartos-imovel").text(imovel.quartos);
-            $("#md-descricao-imovel").text(imovel.descricao);
+        $("#md-finalidade-imovel").text(imovel.finalidade);
+        $("#md-area-imovel").text(imovel.area);
+        $("#md-quartos-imovel").text(imovel.quartos);
+        $("#md-descricao-imovel").text(imovel.descricao);
 
     }
 
@@ -193,6 +198,12 @@ $(function () {
         url = 'create.html'
         window.open(url, "_self");
     });
+
+    $("#form").on("click", "#btn-cancelar", function () {
+        url = 'index.html'
+        window.open(url, "_self");
+    });
+
 
     /* 
     var formCadastro = document.getElementById('form');
@@ -214,5 +225,51 @@ $(function () {
         return imov;
     }
     //localStorage.clear();
+
+    $('#img-file').on("change", function() {
+        previewFiles();
+    });
+
+    var base64;
+
+    function previewFiles() {
+        $('#img-preview').remove();
+        var preview = document.querySelector('#imagem-preview');
+        console.log(preview);
+        var indice = 0;
+        var files = document.querySelector('input[type=file]').files;
+
+
+        function readAndPreview(file) {
+
+            // Make sure `file.name` matches our extensions criteria
+            if (/\.(jpg|png|gif)$/i.test(file.name)) {
+                var reader = new FileReader();
+
+
+                reader.addEventListener("load", function () {
+                    var image = new Image();
+                    //image.height = 'auto';
+                    image.title = file.name;
+                    image.src = this.result;
+                    base64 = this.result;
+                    image.id = 'img-preview';
+                    preview.appendChild(image);
+                    indice++;
+                    informa64();
+                }, false);
+
+                reader.readAsDataURL(file);
+            }
+
+        }
+        if (files) {
+            [].forEach.call(files, readAndPreview);
+        }
+
+    }
+    function informa64(){
+        console.log(base64);
+    }
 
 });
