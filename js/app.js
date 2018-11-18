@@ -73,7 +73,7 @@ $(function () {
 
         for (var i in colecaoImobiliaria) {
             var imovel = JSON.parse(colecaoImobiliaria[i]);
-            $("#content-area").append("<div class='item-lista col-sm'><div id='imagem' class='imagem"+ i +"'></div>" +
+            $("#content-area").append("<div class='item-lista col-sm'><div id='imagem' class='imagem" + i + "'></div>" +
                 "<div class='info'>" +
                 "<span class='titulo'>" + imovel.titulo + "</span>" +
                 "</br>" +
@@ -88,9 +88,9 @@ $(function () {
                 "</div>"
 
             );
-            $('.imagem' + i).css("background-image", 'url('+ imovel.imagem + ')');
+            $('.imagem' + i).css("background-image", 'url(' + imovel.imagem + ')');
 
-            
+
         }
     }
 
@@ -178,7 +178,7 @@ $(function () {
         $("#md-titulo-imovel").text(imovel.titulo);
         $("#md-tipo-imovel").text(imovel.tipo);
         $("#md-preco-imovel").text(imovel.valor);
-        $("#md-imagem-imovel").css("background-image", 'url('+ imovel.imagem + ')');
+        $("#md-imagem-imovel").css("background-image", 'url(' + imovel.imagem + ')');
 
         if (imovel.finalide == 'vender') {
             imovel.finalide = 'À venda'
@@ -229,7 +229,7 @@ $(function () {
     }
     //localStorage.clear();
 
-    $('#img-file').on("change", function() {
+    $('#img-file').on("change", function () {
         previewFiles();
     });
 
@@ -271,7 +271,7 @@ $(function () {
         }
 
     }
-    function informa64(){
+    function informa64() {
         console.log(base64);
     }
 
@@ -289,45 +289,35 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-  
 
 
-function imovelAleatorio(){
 
-    axios.get('js/imoveisDB.json')
-    .then(function (response) {
-        imoveis = response.data.imoveis;
-        console.log(response.data.imoveis);
+function imovelAleatorio() {
+    printaImovel();
 
-        printaImovel();
+    function printaImovel() {
+        // indice recebe um valor aleatório entre 0 e 3 
+        rndI = getRandomInt(0, 5);
+        idImovel = getRandomInt(0, 200)
+        console.log(rndI);
 
-        function printaImovel(){
-            // indice recebe um valor aleatório entre 0 e 3 
-            rndI = getRandomInt(0,5);
-            idImovel = getRandomInt(0,200)
-            console.log(rndI);
+        $("#titulo").val(imoveis[rndI].titulo);
+        $("#area").val(imoveis[rndI].area);
+        $("#valor").val(imoveis[rndI].valor);
+        $("#descricao").val(imoveis[rndI].descricao);
+        $("#quartos").val(imoveis[rndI].quartos);
+        $("#id").val(idImovel);
+        $("#tipo").val(imoveis[rndI].tipo);
+        $("#finalidade").val(imoveis[rndI].categoria);
 
-            $("#titulo").val(imoveis[rndI].titulo);
-            $("#area").val(imoveis[rndI].area);
-            $("#valor").val(imoveis[rndI].valor);
-            $("#descricao").val(imoveis[rndI].descricao);
-            $("#quartos").val(imoveis[rndI].quartos);
-            $("#id").val(idImovel);
-            $("#tipo").val(imoveis[rndI].tipo);
-            $("#finalidade").val(imoveis[rndI].categoria);
+        $('#img-preview').remove();
+        var image = new Image();
+        image.id = 'img-preview';
+        var preview = document.querySelector('#imagem-preview');
+        preview.appendChild(image);
+        image.src = imoveis[rndI].image;
 
-            $('#img-preview').remove();
-            var image = new Image();
-            image.id = 'img-preview';
-            var preview = document.querySelector('#imagem-preview');
-            preview.appendChild(image);
-            image.src = imoveis[rndI].image;
-
-            console.log(imoveis[rndI].image);
-        }
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+        console.log(imoveis[rndI].image);
+    }
 
 }
