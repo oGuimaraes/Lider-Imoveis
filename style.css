@@ -77,16 +77,21 @@ body {
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+  text-align: left;
 }
 .item-lista .btn {
   color: #4b4000;
   font-weight: 600;
 }
-.imagem {
-  background-image: url("https://dfexhk854g3kc.cloudfront.net/jeEEgsBM6Ex6ltvYzLABx7ClYik=/1200x800/filters:watermark(https://s3.amazonaws.com/estaticos.casamineira.com.br/marcadagua-133-v1.png,-50,-50,60)/s3.amazonaws.com/imagens-portal.casamineira.com.br/279845/783a14a47a59dbd416ce8bd1c5917efd.jpg");
-  height: 100%;
-  background-size: cover;
+#imagem {
+  display: flex;
+  height: auto;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 50%;
   width: 40%;
+  text-align: center;
 }
 .background {
   background-image: url("/img/bg.jpg");
@@ -118,6 +123,23 @@ body {
 }
 .formulario-criacao input[type='file'] {
   display: none;
+}
+.formulario-criacao .btn {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.formulario-criacao .btn-aleatorio {
+  background-color: #a2a2a2;
+  border-color: #a2a2a2;
+  margin-left: 30px;
+}
+.formulario-criacao #imagem-preview {
+  text-align: center;
+  margin: 15px auto;
+}
+.formulario-criacao #img-preview {
+  max-width: 300px;
+  max-height: 200px;
 }
 .modal-content {
   border-radius: 0px;

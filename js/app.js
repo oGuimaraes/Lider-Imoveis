@@ -55,7 +55,7 @@ $(function () {
             valor: $("#valor").val(),
             descricao: $("#descricao").val(),
             quartos: $("#quartos").val(),
-            imagem: base64,
+            imagem: $("#img-preview").attr("src"),
         });
 
         colecaoImobiliaria.push(imovel); //* novo imovel é adicionado á coleção 'colecaoImobiliaria' do localStorage.
@@ -89,6 +89,8 @@ $(function () {
 
             );
             $('.imagem' + i).css("background-image", 'url('+ imovel.imagem + ')');
+
+            
         }
     }
 
@@ -176,6 +178,7 @@ $(function () {
         $("#md-titulo-imovel").text(imovel.titulo);
         $("#md-tipo-imovel").text(imovel.tipo);
         $("#md-preco-imovel").text(imovel.valor);
+        $("#md-imagem-imovel").css("background-image", 'url('+ imovel.imagem + ')');
 
         if (imovel.finalide == 'vender') {
             imovel.finalide = 'À venda'
@@ -273,3 +276,58 @@ $(function () {
     }
 
 });
+
+
+var imoveis;
+
+$("#form").on("click", "#btn-aleatorio", function () {
+    imovelAleatorio();
+});
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+  
+
+
+function imovelAleatorio(){
+
+    axios.get('js/imoveisDB.json')
+    .then(function (response) {
+        imoveis = response.data.imoveis;
+        console.log(response.data.imoveis);
+
+        printaImovel();
+
+        function printaImovel(){
+            // indice recebe um valor aleatório entre 0 e 3 
+            rndI = getRandomInt(0,5);
+            idImovel = getRandomInt(0,200)
+            console.log(rndI);
+
+            $("#titulo").val(imoveis[rndI].titulo);
+            $("#area").val(imoveis[rndI].area);
+            $("#valor").val(imoveis[rndI].valor);
+            $("#descricao").val(imoveis[rndI].descricao);
+            $("#quartos").val(imoveis[rndI].quartos);
+            $("#id").val(idImovel);
+            $("#tipo").val(imoveis[rndI].tipo);
+            $("#finalidade").val(imoveis[rndI].categoria);
+
+            $('#img-preview').remove();
+            var image = new Image();
+            image.id = 'img-preview';
+            var preview = document.querySelector('#imagem-preview');
+            preview.appendChild(image);
+            image.src = imoveis[rndI].image;
+
+            console.log(imoveis[rndI].image);
+        }
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+}
