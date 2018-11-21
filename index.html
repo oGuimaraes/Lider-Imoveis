@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet/less" type="text/css" href="style.css" />
+    <link rel="stylesheet/less" type="text/css" href="style.less" />
     <title>Lider Imóveis</title>
 </head>
 
@@ -43,12 +43,15 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="md-titulo" id="md-titulo-imovel">Apartamento 4 quartos no Mangabeiras</h4>
+                        <button type="button" class="close" id="md-close-button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                         <div class="row">
                             <div class="md-imagem" id="md-imagem-imovel"></div>
                             <div class="modal-body">
                                 <span class="titulo">Tipo: </span>
-                                <span id="md-tipo-imovel" class="info-imovel"></span>
+                                <span id="md-tipo-imovel" class="info-imovel"> </span>
                                 <br>
                                 <span class="titulo">Preço: </span>
                                 <span id="md-preco-imovel" class"info-imovel"> </span>
@@ -66,9 +69,6 @@
                                 <div id="md-descricao-imovel" class"info-imovel"> </div>
                             </div>
                         </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Fechar</button>
-                    </div>
                 </div>
 
             </div>

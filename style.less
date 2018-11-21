@@ -179,14 +179,19 @@ body {
 }
 
 .modal-content {
-    border-radius: 0px;
+    border-radius: 5px;
     justify-content: left;
     font-family: 'Open Sans',sans-serif;
     color: #0758a6;
     text-align: left;
+    .box-shadow;
 
     h4  {
         font-weight: 600;
+    }
+
+    .row {
+        margin-bottom: 10px;
     }
 
     .md-imagem {
@@ -197,6 +202,15 @@ body {
         background-image: url("https://dfexhk854g3kc.cloudfront.net/jeEEgsBM6Ex6ltvYzLABx7ClYik=/1200x800/filters:watermark(https://s3.amazonaws.com/estaticos.casamineira.com.br/marcadagua-133-v1.png,-50,-50,60)/s3.amazonaws.com/imagens-portal.casamineira.com.br/279845/783a14a47a59dbd416ce8bd1c5917efd.jpg");
     }
 
+    .modal-header {
+        margin: auto 0;
+        border: none;
+
+        .md-titulo {
+            margin-right: 0px;
+        }
+    }
+
     .md-body {
         color: #888;
     }
@@ -204,11 +218,14 @@ body {
     .titulo {
         color: #464646;
         font-weight: 600;
-        font-style: italic;
     }
 
     #md-descricao-imovel {
         width: 400px;
+    }
+
+    .md-close-button {
+        margin-right: 130px;
     }
 }
 

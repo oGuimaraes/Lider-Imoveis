@@ -145,7 +145,7 @@ $(function () {
         });
 
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
-        //alert("Informações editadas.");
+        alert("Alterações realizadas.");
         window.open('index.html', "_self");
         operacao = "A";
         return true;
@@ -168,15 +168,15 @@ $(function () {
 
         $("#md-titulo-imovel").text(imovel.titulo);
         $("#md-tipo-imovel").text(imovel.tipo);
-        $("#md-preco-imovel").text(imovel.valor);
+        $("#md-preco-imovel").text('R$' + imovel.valor);
         $("#md-imagem-imovel").css("background-image", 'url(' + imovel.imagem + ')');
 
-        if (imovel.finalide == 'vender') {
-            imovel.finalide = 'À venda'
+        if (imovel.finalidade == 'vender') {
+            imovel.finalidade = 'À venda';
         } else imovel.finalidade = 'À alugar';
 
         $("#md-finalidade-imovel").text(imovel.finalidade);
-        $("#md-area-imovel").text(imovel.area);
+        $("#md-area-imovel").text(imovel.area + 'm²');
         $("#md-quartos-imovel").text(imovel.quartos);
         $("#md-descricao-imovel").text(imovel.descricao);
 
@@ -220,17 +220,14 @@ $(function () {
         var indice = 0;
         var files = document.querySelector('input[type=file]').files;
 
-
         function readAndPreview(file) {
 
-            // Make sure `file.name` matches our extensions criteria
             if (/\.(jpg|png|gif)$/i.test(file.name)) {
                 var reader = new FileReader();
 
 
                 reader.addEventListener("load", function () {
                     var image = new Image();
-                    //image.height = 'auto';
                     image.title = file.name;
                     image.src = this.result;
                     base64 = this.result;
