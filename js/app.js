@@ -7,6 +7,12 @@ $(function () {
     var operacao = "A";
 
 
+    // Cria uma alert com a mensage no parametro da funcao
+    function displayMessage(msg) {
+        $('#alert').html('<div class="alert alert-danger">' + msg + '</div>');
+    }
+
+
     // Caso colecaoImobiliaria esteja sem conteudo, iniciamos um vetor vazio
     if (colecaoImobiliaria == null) 
         colecaoImobiliaria = [];
@@ -78,9 +84,10 @@ $(function () {
         // .splice(item_removido, do indice 1);
         colecaoImobiliaria.splice(indice_selecionado, 1);
 
+        displayMessage('Anúncio excluido com sucesso!');
+
         // remove do localStorage o item
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
-        //alert("Imóvel excluído.");
     }
 
     $("#content-area").on("click", "#btn-excluir", function () {
@@ -217,7 +224,7 @@ $(function () {
     function previewFiles() {
         $('#img-preview').remove();
         var preview = document.querySelector('#imagem-preview');
-        var indice = 0;
+
         var files = document.querySelector('input[type=file]').files;
 
         function readAndPreview(file) {
@@ -225,7 +232,7 @@ $(function () {
             if (/\.(jpg|png|gif)$/i.test(file.name)) {
                 var reader = new FileReader();
 
-
+                var i = 0;
                 reader.addEventListener("load", function () {
                     var image = new Image();
                     image.title = file.name;
@@ -233,8 +240,7 @@ $(function () {
                     base64 = this.result;
                     image.id = 'img-preview';
                     preview.appendChild(image);
-                    indice++;
-                    informa64();
+                    i++;
                 }, false);
 
                 reader.readAsDataURL(file);
@@ -249,10 +255,12 @@ $(function () {
 
 });
 
-var imoveis;
-
-$("#form").on("click", "#btn-aleatorio", function () {
-    imovelAleatorio();
+$('#alert').bind("DOMSubtreeModified", function () {
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
 });
 
 function getRandomInt(min, max) {
@@ -261,29 +269,36 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+var imoveis;
+
+$("#form").on("click", "#btn-aleatorio", function () {
+    imovelAleatorio();
+});
+
+
 function imovelAleatorio() {
     printaImovel();
 
     function printaImovel() {
-        // indice recebe um valor aleatório entre 0 e 3 
-        rndI = getRandomInt(0, 5);
+        // indice recebe um valor aleatório entre 0 e 5
+        indice = getRandomInt(0, 5);
         idImovel = getRandomInt(0, 200)
 
-        $("#titulo").val(imoveis[rndI].titulo);
-        $("#area").val(imoveis[rndI].area);
-        $("#valor").val(imoveis[rndI].valor);
-        $("#descricao").val(imoveis[rndI].descricao);
-        $("#quartos").val(imoveis[rndI].quartos);
+        $("#titulo").val(imoveis[indice].titulo);
+        $("#area").val(imoveis[indice].area);
+        $("#valor").val(imoveis[indice].valor);
+        $("#descricao").val(imoveis[indice].descricao);
+        $("#quartos").val(imoveis[indice].quartos);
         $("#id").val(idImovel);
-        $("#tipo").val(imoveis[rndI].tipo);
-        $("#finalidade").val(imoveis[rndI].categoria);
+        $("#tipo").val(imoveis[indice].tipo);
+        $("#finalidade").val(imoveis[indice].categoria);
 
         $('#img-preview').remove();
         var image = new Image();
         image.id = 'img-preview';
         var preview = document.querySelector('#imagem-preview');
         preview.appendChild(image);
-        image.src = imoveis[rndI].image;
+        image.src = imoveis[indice].image;
 
     }
 }
