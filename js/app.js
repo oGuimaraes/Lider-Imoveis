@@ -8,8 +8,8 @@ $(function () {
 
 
     // Cria uma alert com a mensage no parametro da funcao
-    function displayMessage(msg) {
-        $('#alert').html('<div class="alert alert-danger">' + msg + '</div>');
+    function displayMessage(msg, type) {
+        $('#alert').html('<div class="alert alert-' + type + '">' + msg + '</div>');
     }
 
 
@@ -44,9 +44,13 @@ $(function () {
         colecaoImobiliaria.push(imovel); 
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
 
-        //* index.html é acessado na pagina
-        window.open('index.html', "_self");
-        //alert("Registro adicionado.");
+        displayMessage('Imóvel adicionado com sucesso!', 'success');
+
+        //* index.html é acessado na pagina após 1,5s
+        window.setTimeout(function () {
+            window.open('index.html', "_self");
+        }, 1500);
+
         return true;
     };
 
@@ -84,10 +88,11 @@ $(function () {
         // .splice(item_removido, do indice 1);
         colecaoImobiliaria.splice(indice_selecionado, 1);
 
-        displayMessage('Anúncio excluido com sucesso!');
+        displayMessage('Imóvel excluido com sucesso!', 'danger');
 
         // remove do localStorage o item
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
+
     }
 
     $("#content-area").on("click", "#btn-excluir", function () {
@@ -149,12 +154,20 @@ $(function () {
             descricao: $("#descricao").val(),
             quartos: $("#quartos").val(),
             imagem: $("#img-preview").attr("src"),
+
         });
 
         localStorage.setItem("colecaoImobiliaria", JSON.stringify(colecaoImobiliaria));
-        alert("Alterações realizadas.");
-        window.open('index.html', "_self");
+        //alert("Alterações realizadas.");
+        displayMessage('Imóvel editado com sucesso!', 'warning');
+
+        window.setTimeout(function () {
+            window.open('index.html', "_self");
+        }, 1500);
+
+
         operacao = "A";
+        
         return true;
     };
 
@@ -162,6 +175,7 @@ $(function () {
         operacao = "E";
         indice_selecionado = parseInt($(this).attr("alt"));
         var url = 'edit.html?id=' + indice_selecionado + '&operacao=' + operacao;
+
         window.open(url, "_self");
         return indice_selecionado
     });
@@ -239,6 +253,7 @@ $(function () {
                     image.src = this.result;
                     base64 = this.result;
                     image.id = 'img-preview';
+                    var preview = document.querySelector('#imagem-preview');
                     preview.appendChild(image);
                     i++;
                 }, false);
@@ -260,7 +275,7 @@ $('#alert').bind("DOMSubtreeModified", function () {
         $(".alert").fadeTo(500, 0).slideUp(500, function () {
             $(this).remove();
         });
-    }, 2000);
+    }, 1500);
 });
 
 function getRandomInt(min, max) {
@@ -282,7 +297,7 @@ function imovelAleatorio() {
     function printaImovel() {
         // indice recebe um valor aleatório entre 0 e 5
         indice = getRandomInt(0, 5);
-        idImovel = getRandomInt(0, 200)
+        idImovel = getRandomInt(0, 500)
 
         $("#titulo").val(imoveis[indice].titulo);
         $("#area").val(imoveis[indice].area);
