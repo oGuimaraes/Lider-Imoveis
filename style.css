@@ -4,6 +4,12 @@
   font-weight: 400;
   src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wWw.ttf) format('truetype');
+}
 * {
   margin: 0 auto;
 }
@@ -15,17 +21,32 @@
 }
 #btn-create {
   margin: 15px auto;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
 }
 body {
   background-color: #ebebeb;
   font-family: 'Open Sans', sans-serif;
 }
 .form-control::-webkit-input-placeholder {
+  font-family: 'Roboto', sans-serif;
   color: #bbbbbb;
   font-style: italic;
   font-size: 13px;
 }
-.form-control:-moz-placeholder {
+.form-control::-webkit-select-placeholder {
+  font-family: 'Roboto', sans-serif;
+  color: #bbbbbb;
+  font-style: italic;
+  font-size: 13px;
+}
+.form-control::-moz-placeholder {
+  font-family: 'Roboto', sans-serif;
+  color: #bbbbbb;
+  font-style: italic;
+  font-size: 13px;
+}
+.form-control:-input::placeholder {
+  font-family: 'Roboto', sans-serif;
   color: #bbbbbb;
   font-style: italic;
   font-size: 13px;
@@ -119,7 +140,11 @@ body {
   font-weight: 600;
 }
 .formulario-criacao textarea {
-  height: 85px;
+  height: 90px;
+  font-family: 'Calibri', sans-serif;
+}
+.formulario-criacao input {
+  font-family: 'Calibri', sans-serif;
 }
 .formulario-criacao input[type='file'] {
   display: none;
@@ -138,20 +163,44 @@ body {
   margin: 15px auto;
 }
 .formulario-criacao #img-preview {
-  max-width: 300px;
-  max-height: 200px;
+  padding: 7px;
+  border: 1px #dcdcdc solid;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  max-width: 330px;
+}
+.alert {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  padding: 7px 7px;
+}
+.alert-danger {
+  color: #f96776;
+  background-color: #ffdde0;
+}
+.alert-warning {
+  color: #856404;
+  background-color: #fbe399;
+  border-color: #ffeeba;
 }
 .modal-content {
-  border-radius: 0px;
+  border-radius: 5px;
   justify-content: left;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Calibri', sans-serif;
+  font-size: 16px;
   color: #0758a6;
   text-align: left;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.03);
 }
 .modal-content h4 {
   font-weight: 600;
+  font-size: 30px;
+}
+.modal-content .row {
+  margin-bottom: 10px;
 }
 .modal-content .md-imagem {
+  border: 1px solid rgb(197, 197, 197);
   height: 250px;
   width: 40%;
   margin-left: 40px;
@@ -159,7 +208,15 @@ body {
   background-image: url("https://dfexhk854g3kc.cloudfront.net/jeEEgsBM6Ex6ltvYzLABx7ClYik=/1200x800/filters:watermark(https://s3.amazonaws.com/estaticos.casamineira.com.br/marcadagua-133-v1.png,-50,-50,60)/s3.amazonaws.com/imagens-portal.casamineira.com.br/279845/783a14a47a59dbd416ce8bd1c5917efd.jpg");
 }
 .modal-content .modal-header {
+  padding: 12px 8px 8px 8px;
   margin: auto 0;
+  border: none;
+}
+.modal-content .modal-header .md-titulo {
+  margin-right: 0px;
+}
+.modal-content .modal-header button {
+  padding: 10px 20px;
 }
 .modal-content .md-body {
   color: #888;
@@ -167,7 +224,6 @@ body {
 .modal-content .titulo {
   color: #464646;
   font-weight: 600;
-  font-style: italic;
 }
 .modal-content #md-descricao-imovel {
   width: 400px;

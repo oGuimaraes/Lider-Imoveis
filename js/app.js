@@ -230,18 +230,18 @@ $(function () {
     }
 
     $('#img-file').on("change", function () {
-        previewFiles();
+        escolherFoto();
     });
 
     var base64;
 
-    function previewFiles() {
+    function escolherFoto() {
         $('#img-preview').remove();
         var preview = document.querySelector('#imagem-preview');
 
         var files = document.querySelector('input[type=file]').files;
 
-        function readAndPreview(file) {
+        function criarImagem(file) {
 
             if (/\.(jpg|png|gif)$/i.test(file.name)) {
                 var reader = new FileReader();
@@ -263,7 +263,7 @@ $(function () {
 
         }
         if (files) {
-            [].forEach.call(files, readAndPreview);
+            [].forEach.call(files, criarImagem);
         }
 
     }
